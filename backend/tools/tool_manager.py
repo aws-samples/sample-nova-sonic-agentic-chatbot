@@ -1,10 +1,19 @@
-import os
 import json
 from typing import Dict, Any, List
 from .base import ToolRegistry
-from .categories.utility import DateAndTimeTool
-from .categories.media import SampleImageTool, SamplePdfTool, SampleVideoTool
-from .categories.order import TrackOrderTool
+from .categories.finance import (
+    CheckBalanceTool,
+    SendMoneyTool,
+    GetTransactionsTool,
+    GetStockQuoteTool,
+    GetBudgetTool,
+    PayBillTool,
+    GetFinancialGoalsTool,
+    AddExpenseTool,
+    BuyStockTool,
+    GetPortfolioTool,
+)
+
 
 class ToolManager:
     def __init__(self):
@@ -12,25 +21,32 @@ class ToolManager:
         self._initialize_registry()
 
     def _initialize_registry(self) -> None:
-        """Initialize the tool registry with all available tools"""
-        # Register all tools
+        """Initialize the tool registry with all available financial tools"""
         self.registry.register_tools([
-            # Utility tools
-            DateAndTimeTool(),
+            # Account tools
+            CheckBalanceTool(),
+            SendMoneyTool(),
+            GetTransactionsTool(),
             
-            # Media tools
-            SampleImageTool(),
-            SamplePdfTool(),
-            SampleVideoTool(),
+            # Budget & expense tools
+            GetBudgetTool(),
+            AddExpenseTool(),
             
-            # Order tools
-            TrackOrderTool(),
+            # Bills & payments
+            PayBillTool(),
+            
+            # Investments
+            GetStockQuoteTool(),
+            BuyStockTool(),
+            GetPortfolioTool(),
+            
+            # Goals & planning
+            GetFinancialGoalsTool(),
         ])
 
     async def execute_tool(self, tool_name: str, content: Dict[str, Any]) -> Dict[str, Any]:
         """Execute a tool by name"""
         try:
-            # All tools are now in the registry
             return await self.registry.execute_tool(tool_name, content)
         except KeyError:
             raise KeyError(f"Tool '{tool_name}' not found")
@@ -38,7 +54,6 @@ class ToolManager:
     def get_tool_configs(self) -> List[Dict[str, Any]]:
         """Get all tool configurations formatted for Nova Sonic"""
         configs = self.registry.get_tool_configs()
-        # Format each tool config according to Nova Sonic's expected format
         return [
             {
                 "toolSpec": {
@@ -50,4 +65,4 @@ class ToolManager:
                 }
             }
             for config in configs
-        ] 
+        ]

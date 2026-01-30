@@ -1,0 +1,4 @@
+# file: /Users/alfonaz/Desktop/Projects/sonicDemo1/sample-nova-sonic-agentic-chatbot/backend/tools/categories/banking/state.py
+# hypothesis_version: 6.151.4
+
+[-120.0, -85.23, -45.8, -14.99, -4.5, 29.99, 500.0, 3000.0, 5000.0, 'Alice', 'BankingState', 'Bob', 'Charlie', 'Coffee Shop', 'Diana', 'Electric Bill', 'Freelance Payment', 'Grocery Store', 'Power Company', 'Restaurant', 'Salary Deposit', 'Subscription Service', 'action', 'actionHistory', 'amount', 'avatarColor', 'balance', 'blue', 'contacts', 'date', 'description', 'green', 'id', 'name', 'orange', 'purple', 'recipient', 'timestamp', 'transactions']

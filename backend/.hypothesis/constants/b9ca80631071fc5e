@@ -1,0 +1,4 @@
+# file: /Users/alfonaz/Desktop/Projects/sonicDemo1/sample-nova-sonic-agentic-chatbot/backend/tools/categories/media/sample_video_tool.py
+# hypothesis_version: 6.151.4
+
+['&controls=0', 'Error', 'Show a YouTube video', 'YouTube Video', '^[A-Za-z0-9_-]{11}$', 'a9__D53WsUs', 'boolean', 'content', 'description', 'error', 'message', 'name', 'object', 'pattern', 'properties', 'schema', 'shortDescription', 'showControls', 'showSampleVideoTool', 'string', 'text', 'title', 'type', 'url', 'video', 'videoId']

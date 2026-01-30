@@ -46,9 +46,10 @@ def get_aws_credentials_resolver():
         return EnvironmentCredentialsResolver()
 
 class SimpleNovaSonic:
-    def __init__(self, model_id='amazon.nova-sonic-v1:0', region='us-east-1'):
+    def __init__(self, model_id='amazon.nova-sonic-v1:0', region='us-east-1', language='en'):
         self.model_id = model_id
         self.region = region
+        self.language = language
         self.client = None
         self.stream = None
         self.response = None
@@ -156,9 +157,22 @@ class SimpleNovaSonic:
         '''
         await self.send_event(text_content_start)
         
-        system_prompt = "You are a friendly assistant. The user and you will engage in a spoken dialog " \
-            "exchanging the transcripts of a natural real-time conversation. Keep your responses short, " \
-            "generally two or three sentences for chatty scenarios. Important:If you are using a tool, mention that you are gathering information."
+        # Language-specific instructions
+        language_names = {
+            'en': 'English',
+            'es': 'Spanish',
+            'de': 'German',
+            'fr': 'French',
+            'it': 'Italian',
+            'pt': 'Portuguese',
+            'hi': 'Hindi'
+        }
+        language_name = language_names.get(self.language, 'English')
+        
+        system_prompt = f"You are a friendly assistant. The user and you will engage in a spoken dialog " \
+            f"exchanging the transcripts of a natural real-time conversation. Keep your responses short, " \
+            f"generally two or three sentences for chatty scenarios. Important: If you are using a tool, mention that you are gathering information. " \
+            f"IMPORTANT: You MUST respond in {language_name} language only. The user will speak in {language_name} and you must reply in {language_name}."
 
         text_input = f'''
         {{

@@ -1,22 +1,13 @@
-import { ToolOutput as ToolOutputType } from './types';
+import { ToolOutput as ToolOutputType, AppToolOutput, BankingAppToolOutput } from './types';
 import { TextOutput } from './TextOutput';
 import { CardOutput } from './CardOutput';
 import { ImageOutput } from './ImageOutput';
 import { VideoOutput } from './VideoOutput';
 import { PdfOutput } from './PdfOutput';
 import { ButtonOutput } from './ButtonOutput';
-import { TOOL_OUTPUT_STYLES } from '@/config/tool-outputs';
 import { BargeinOutput } from './BargeinOutput';
-import { AnimatedContainer } from './AnimatedContainer';
-import { AnimatePresence } from 'framer-motion';
-import { SummaryOutput } from './SummaryOutput';
 import { EchoApp } from '../apps/EchoApp';
-
-const UnsupportedOutput = ({ type }: { type: string }) => (
-  <AnimatedContainer className="bg-yellow-50 border border-yellow-100 p-6 rounded-lg">
-    <p className="text-yellow-800">Unsupported content type: {type}</p>
-  </AnimatedContainer>
-);
+import { BankingApp } from '../apps/BankingApp';
 
 interface ToolOutputProps {
   output: ToolOutputType;
@@ -32,8 +23,16 @@ const ToolOutput: React.FC<ToolOutputProps> = ({ output, websocket }) => {
       {output.type === 'barge_in' && (
         <BargeinOutput key="barge_in" />
       )}
-      {output.type === 'app' && (
-        <EchoApp key="app" {...(output.props || {})} />
+      {output.type === 'app' && (output as AppToolOutput).appName === 'banking' && (
+        <BankingApp
+          key="banking-app"
+          action={(output as BankingAppToolOutput).props?.action}
+          state={(output as BankingAppToolOutput).props?.state}
+          transaction={(output as BankingAppToolOutput).props?.transaction}
+        />
+      )}
+      {output.type === 'app' && (output as AppToolOutput).appName !== 'banking' && (
+        <EchoApp key="app" {...((output as AppToolOutput).props || {})} />
       )}
       {output.type === 'card' && output.content && (
         <CardOutput output={output} key="card" />
@@ -50,7 +49,7 @@ const ToolOutput: React.FC<ToolOutputProps> = ({ output, websocket }) => {
       {output.type === 'button' && output.content && (
         <ButtonOutput output={output} websocket={websocket} key="button" />
       )}
-      {[ 'barge_in', 'app', 'card', 'text', 'image', 'video', 'pdf', 'button' ].indexOf(output.type) === -1 && (
+      {['barge_in', 'app', 'card', 'text', 'image', 'video', 'pdf', 'button'].indexOf(output.type) === -1 && (
         <div className="text-gray-500 italic">Unknown output type: {output.type}</div>
       )}
     </div>

@@ -1,0 +1,4 @@
+# file: /Users/alfonaz/Desktop/Projects/sonicDemo1/sample-nova-sonic-agentic-chatbot/backend/tools/categories/order/track_order_tool.py
+# hypothesis_version: 6.151.4
+
+[10000, '#', '%Y-%m-%d', 'Current Status', 'Delayed', 'Delivered', 'Distribution Center', 'Enabled', 'Estimated Delivery', 'Front Door', 'In transit', 'Notifications', 'Order received', 'Out for delivery', 'Processing', 'Shipped', 'Track Another Order', 'Tracking an order', 'action', 'additionalInfo', 'boolean', 'card', 'content', 'currentLocation', 'deliveryLocation', 'description', 'details', 'estimatedDelivery', 'footer', 'name', 'notificationStatus', 'object', 'orderId', 'orderNumber', 'orderStatus', 'properties', 'requestNotifications', 'required', 'schema', 'shortDescription', 'string', 'text', 'title', 'trackOrderTool', 'type', 'url']

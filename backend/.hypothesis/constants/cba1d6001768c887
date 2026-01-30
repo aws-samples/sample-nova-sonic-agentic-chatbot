@@ -1,0 +1,4 @@
+# file: /Users/alfonaz/Desktop/Projects/sonicDemo1/sample-nova-sonic-agentic-chatbot/backend/tools/categories/banking/send_money.py
+# hypothesis_version: 6.151.4
+
+['USD', 'action', 'amount', 'amount_sent', 'app', 'appName', 'available_contacts', 'banking', 'code', 'currency', 'current_balance', 'date', 'description', 'error', 'id', 'insufficient_funds', 'invalid_amount', 'message', 'money_sent', 'name', 'new_balance', 'number', 'object', 'properties', 'props', 'recipient', 'requested_amount', 'required', 'schema', 'send_money', 'shortDescription', 'shortfall', 'state', 'string', 'success', 'transaction', 'transaction_id', 'type', 'unknown_recipient']

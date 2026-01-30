@@ -1,0 +1,4 @@
+# file: /Users/alfonaz/Desktop/Projects/sonicDemo1/sample-nova-sonic-agentic-chatbot/backend/tools/tool_manager.py
+# hypothesis_version: 6.151.4
+
+['description', 'inputSchema', 'json', 'name', 'schema', 'toolSpec']

@@ -1,0 +1,4 @@
+# file: /Users/alfonaz/Desktop/Projects/sonicDemo1/sample-nova-sonic-agentic-chatbot/backend/tools/categories/banking/get_transactions.py
+# hypothesis_version: 6.151.4
+
+['USD', 'action', 'amount', 'app', 'appName', 'banking', 'count', 'currency', 'date', 'description', 'formatted_amount', 'get_transactions', 'id', 'incoming', 'integer', 'limit', 'name', 'object', 'outgoing', 'properties', 'props', 'recipient', 'required', 'schema', 'shortDescription', 'show_transactions', 'state', 'total_incoming', 'total_outgoing', 'transactions', 'type']

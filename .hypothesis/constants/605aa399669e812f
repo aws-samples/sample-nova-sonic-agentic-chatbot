@@ -1,0 +1,4 @@
+# file: /Users/alfonaz/Desktop/Projects/sonicDemo1/sample-nova-sonic-agentic-chatbot/backend/tools/categories/utility/datetime_tool.py
+# hypothesis_version: 6.151.4
+
+['#', '%A', '%A, %B %d, %Y', '%B', '%I:%M %p', '%Y-%m-%d', 'America/Los_Angeles', 'Current Date & Time', 'Date', 'Day of Week', 'Month', 'PST', 'Refresh', 'Time', 'Time Zone', 'Year', 'action', 'card', 'content', 'date', 'day', 'dayOfWeek', 'description', 'details', 'footer', 'formattedTime', 'getDateAndTimeTool', 'image', 'imageAlt', 'month', 'name', 'object', 'properties', 'required', 'schema', 'shortDescription', 'text', 'timezone', 'title', 'type', 'url', 'year']

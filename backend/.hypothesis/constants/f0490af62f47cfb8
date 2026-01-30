@@ -1,0 +1,4 @@
+# file: /Users/alfonaz/Desktop/Projects/sonicDemo1/sample-nova-sonic-agentic-chatbot/backend/tools/categories/banking/check_balance.py
+# hypothesis_version: 6.151.4
+
+['USD', 'action', 'app', 'appName', 'balance', 'banking', 'check_balance', 'currency', 'description', 'formatted_balance', 'highlight_balance', 'name', 'object', 'properties', 'props', 'required', 'schema', 'shortDescription', 'state', 'type']

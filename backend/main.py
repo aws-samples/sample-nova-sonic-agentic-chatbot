@@ -1,7 +1,7 @@
 from fastapi import FastAPI, WebSocket
 from fastapi.middleware.cors import CORSMiddleware
 import asyncio
-from nova_sonic_simple import SimpleNovaSonic
+from nova_sonic_simple import SimpleNovaSonic, CHUNK_SIZE
 import logging
 import os
 import wave
@@ -185,14 +185,14 @@ class ConnectionManager:
             if self.active_connection:
                 await self.active_connection.send_text(json.dumps(error_result))
 
-    async def connect(self, websocket: WebSocket):
+    async def connect(self, websocket: WebSocket, model_id: str = "amazon.nova-sonic-v1:0", language: str = "en"):
         await websocket.accept()
         self.active_connection = websocket
-        logger.info("WebSocket connection accepted")
+        logger.info(f"WebSocket connection accepted with model: {model_id}, language: {language}")
         
-        self.nova_client = SimpleNovaSonic()
+        self.nova_client = SimpleNovaSonic(model_id=model_id, language=language)
         await self.nova_client.start_session()
-        logger.info("Nova Sonic session started")
+        logger.info(f"Nova Sonic session started with model: {model_id}, language: {language}")
 
         # --- Send conversation history after system prompt ---
         history = self.get_history()
@@ -454,8 +454,11 @@ manager = ConnectionManager(save_debug_audio=SAVE_DEBUG_AUDIO)
 
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
-    logger.info("New WebSocket connection request")
-    await manager.connect(websocket)
+    # Get model and language from query parameters
+    model_id = websocket.query_params.get("model", "amazon.nova-sonic-v1:0")
+    language = websocket.query_params.get("language", "en")
+    logger.info(f"New WebSocket connection request with model: {model_id}, language: {language}")
+    await manager.connect(websocket, model_id=model_id, language=language)
     
     # Send tool configurations
     tool_configs = manager.nova_client.tool_manager.get_tool_configs() if manager.nova_client else []

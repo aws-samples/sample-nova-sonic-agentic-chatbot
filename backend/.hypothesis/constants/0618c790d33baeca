@@ -1,0 +1,4 @@
+# file: /Users/alfonaz/Desktop/Projects/sonicDemo1/sample-nova-sonic-agentic-chatbot/backend/tools/categories/media/sample_image_tool.py
+# hypothesis_version: 6.151.4
+
+['Sample Image', 'content', 'description', 'image', 'name', 'object', 'properties', 'required', 'schema', 'shortDescription', 'showSampleImageTool', 'title', 'type', 'url']
